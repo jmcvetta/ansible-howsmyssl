@@ -1,0 +1,23 @@
+# vim:ft=upstart:
+#-------------------------------------------------------------------------------
+#
+# Upstart script for howsmyssl
+#
+#-------------------------------------------------------------------------------
+# {{ ansible_managed }}
+#-------------------------------------------------------------------------------
+
+start on startup
+stop on shutdown
+
+respawn
+
+script
+	cd {{ howsmyssl_path }}
+	exec ./howsmyssl \
+		-httpAddr=0.0.0.0:80 \
+		-httpsAddr=0.0.0.0:443 \
+		-vhost={{ inventory_hostname }}:443 \
+		-cert={{ pem_path }} \
+		-key={{ key_path }}
+end script

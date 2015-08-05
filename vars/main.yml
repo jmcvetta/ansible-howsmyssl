@@ -1,2 +1,10 @@
+# vim:ft=ansible:
 ---
-# vars file for .
+
+gopath: /opt/gopath
+howsmyssl_path: /opt/howsmyssl
+pem_path: "{{ howsmyssl_path }}/config/{{ inventory_hostname }}.pem"
+key_path: "{{ howsmyssl_path }}/config/{{ inventory_hostname }}.key"
+
+goenv:
+  GOPATH: "{{ gopath }}"

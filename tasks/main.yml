@@ -1,2 +1,53 @@
+# vim:ft=ansible:
 ---
-# tasks file for .
+
+- name: Ensure system dependencies are installed
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - git
+    - golang
+
+- name: Ensure howsmyssl repo is checked out
+  git:
+    repo: https://github.com/jmhodges/howsmyssl.git
+    dest: "{{ howsmyssl_path }}"
+    update: no
+    accept_hostkey: yes
+
+- name: Ensure Go dependencies are present
+  shell: go get -d .
+  args:
+    chdir: "{{ howsmyssl_path }}"
+    creates: "{{ gopath }}/src/jmhodges"
+  environment: "{{ goenv }}"
+
+- name: Ensure howsmyssl is compiled
+  shell: go build .
+  args:
+    chdir: "{{ howsmyssl_path }}"
+    creates: "{{ howsmyssl_path }}/howsmyssl"
+  environment: "{{ goenv }}"
+
+- name: Ensure SSL certificate is present
+  copy:
+    src: "{{ inventory_hostname }}.pem"
+    dest: "{{ pem_path }}"
+
+- name: Ensure SSL key is present
+  copy:
+    src: "{{ inventory_hostname }}.key"
+    dest: "{{ key_path }}"
+
+- name: Ensure howsmyssl Upstart file is present
+  template:
+    src: howsmyssl.upstart
+    dest: /etc/init/howsmyssl.conf
+
+- name: Ensure howsmyssl service is enabled and started
+  service:
+    name: howsmyssl
+    enabled: yes
+    state: started
+
