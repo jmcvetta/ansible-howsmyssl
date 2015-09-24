@@ -1,7 +1,7 @@
 ansible-howsmyssl
 =================
 
-Ansible role to deploy [howsmyssl](https://github.com/jmhodges/howsmyssl)
+Ansible role to deploy [HowsMySSL](https://github.com/jmhodges/howsmyssl)
 
 
 Requirements
