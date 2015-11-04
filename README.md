@@ -30,7 +30,21 @@ Including an example of how to use your role (for instance, with variables passe
 ```yaml
 - hosts: howsmyssl
   roles:
-    - jmcvetta.howsmyssl
+    - jason.mcvetta.howsmyssl
+```
+
+
+Testing
+-------
+
+Use [Test Kitchen](http://kitchen.ci) to test this role.  
+
+```bash
+# Install Test Kitchen and dependencies
+bundle install
+
+# Run the tests
+kitchen test
 ```
 
 
