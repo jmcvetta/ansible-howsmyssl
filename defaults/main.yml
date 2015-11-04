@@ -1,2 +1,5 @@
+# vim:ft=ansible:
 ---
-# defaults file for .
+
+ssl_cert_file: test_ssl.crt
+ssl_key_file: test_ssl.key
