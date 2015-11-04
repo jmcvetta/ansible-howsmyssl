@@ -32,12 +32,12 @@
 
 - name: Ensure SSL certificate is present
   copy:
-    src: "{{ inventory_hostname }}.pem"
+    src: "{{ ssl_cert_file }}"
     dest: "{{ pem_path }}"
 
 - name: Ensure SSL key is present
   copy:
-    src: "{{ inventory_hostname }}.key"
+    src: "{{ ssl_key_file }}"
     dest: "{{ key_path }}"
 
 - name: Ensure howsmyssl Upstart file is present
