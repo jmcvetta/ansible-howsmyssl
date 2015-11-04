@@ -7,14 +7,10 @@ driver:
 provisioner:
   name: ansible_playbook
   hosts: all
-  ansible_verbose: true
 
 
 platforms:
   - name: ubuntu-14.04
-  - name: ubuntu-12.04
-  - name: ubuntu-15.04
-  - name: centos-7.1
 
 suites:
   - name: default
