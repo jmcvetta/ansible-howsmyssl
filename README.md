@@ -7,13 +7,16 @@ Ansible role to deploy [HowsMySSL](https://github.com/jmhodges/howsmyssl)
 Requirements
 ------------
 
-Ubuntu 14.04LTS.  Other Linux flavors may or may not work - YMMV.  
+Tested on Ubuntu 14.04LTS.
 
 
 Role Variables
 --------------
 
-*none*
+```yaml
+ssl_cert_file: test_ssl.crt
+ssl_key_file: test_ssl.key
+```
 
 
 Dependencies
