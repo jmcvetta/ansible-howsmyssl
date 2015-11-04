@@ -6,15 +6,14 @@ driver:
 
 provisioner:
   name: ansible_playbook
-  roles_path: roles
   hosts: all
   # require_ansible_repo: true
 
 
 platforms:
   - name: ubuntu-14.04
-  - name: ubuntu-15.10
-  - name: centos-7.1
+  #- name: ubuntu-12.04
+  #- name: centos-7.1
 
 suites:
   - name: default
