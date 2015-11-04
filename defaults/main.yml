@@ -1,5 +1,5 @@
 # vim:ft=ansible:
 ---
 
-ssl_cert_file: cert.pem
-ssl_key_file: key.pem
+ssl_cert_file: test_ssl.crt
+ssl_key_file: test_ssl.key
